@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 const redux = require('redux')
+import {Provider} from 'react-redux' //no la mot components
 
 const App = () => (
     <div>
@@ -9,7 +10,11 @@ const App = () => (
 );
 
 ReactDOM.render(
-    <App />,
+    <Provider>
+        <App/>
+    </Provider>, //no se tro thanh root components
+    //neu co hai cai app thi dung the div de bao lai cai app
+    
     document.getElementById('root')// eslint-disable-line
 );
 
