@@ -15,8 +15,9 @@ ReactDOM.render(
 
 //dispath la thuc hien phai truyen vao mot cai action
 
-const reducer = (state = 0, action) => {
-    if(action.type === 'THEM') return state + 1
+const reducer = (state = {value: 0}, action) => {
+    if(action.type === 'THEM') return {value: state.value + 1}
+    if(action.type === 'BOT') return {value: state.value - 1}
     return state
 }
 
@@ -27,5 +28,9 @@ const state = store.getState()
 console.log(state)
 
 store.dispatch({type: 'THEM'})
+
+console.log(store.getState())
+
+store.dispatch({type: 'BOT'})
 
 console.log(store.getState())

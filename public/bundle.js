@@ -9560,10 +9560,11 @@ _reactDom2.default.render(_react2.default.createElement(App, null), document.get
 //dispath la thuc hien phai truyen vao mot cai action
 
 var reducer = function reducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { value: 0 };
     var action = arguments[1];
 
-    if (action.type === 'THEM') return state + 1;
+    if (action.type === 'THEM') return { value: state.value + 1 };
+    if (action.type === 'BOT') return { value: state.value - 1 };
     return state;
 };
 
@@ -9574,6 +9575,10 @@ var state = store.getState();
 console.log(state);
 
 store.dispatch({ type: 'THEM' });
+
+console.log(store.getState());
+
+store.dispatch({ type: 'BOT' });
 
 console.log(store.getState());
 
