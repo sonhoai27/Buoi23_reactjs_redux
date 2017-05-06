@@ -12,7 +12,7 @@ const App = () => (
 )
 //dispath la thuc hien phai truyen vao mot cai action
 
-const reducer = (state = {value: 0}, action) => {
+const reducer = (state = {value: 1}, action) => {
     if(action.type === 'THEM') return {value: state.value + 1}
     if(action.type === 'BOT') return {value: state.value - 1}
     return state

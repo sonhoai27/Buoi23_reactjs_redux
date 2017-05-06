@@ -10966,6 +10966,8 @@ var _react = __webpack_require__(25);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = __webpack_require__(97);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10989,16 +10991,22 @@ var Box = function (_Component) {
   _createClass(Box, [{
     key: 'Them',
     value: function Them() {
-      this.setState({
-        value: this.state.value + 1
-      });
+      // this.setState({
+      //   value: this.state.value + 1
+      // })
+      var dispatch = this.props.dispatch;
+
+      dispatch({ type: 'THEM' });
     }
   }, {
     key: 'Bot',
     value: function Bot() {
-      this.setState({
-        value: this.state.value - 1
-      });
+      //  this.setState({
+      //    value: this.state.value - 1
+      //   })
+      var dispatch = this.props.dispatch;
+
+      dispatch({ type: 'BOT' });
     }
   }, {
     key: 'render',
@@ -11009,7 +11017,7 @@ var Box = function (_Component) {
         _react2.default.createElement(
           'h2',
           null,
-          this.state.value
+          this.props.vl
         ),
         _react2.default.createElement(
           'button',
@@ -11028,7 +11036,12 @@ var Box = function (_Component) {
   return Box;
 }(_react.Component);
 
-exports.default = Box;
+//trong connect: state la cai store
+
+
+exports.default = (0, _reactRedux.connect)(function (state) {
+  return { vl: state.value };
+})(Box); //tra va mot cai object, luc nay thi cai value cua cai redux ben app la props
 
 /***/ }),
 /* 96 */
@@ -11127,7 +11140,7 @@ var App = function App() {
 //dispath la thuc hien phai truyen vao mot cai action
 
 var reducer = function reducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { value: 0 };
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { value: 1 };
     var action = arguments[1];
 
     if (action.type === 'THEM') return { value: state.value + 1 };
