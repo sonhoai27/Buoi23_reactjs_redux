@@ -9575,7 +9575,9 @@ var reducer = function reducer() {
       }) };
   }
   if (action.type === 'THEM') {
-    return { mang: state.mang.concat(action.item) };
+    // return {mang: state.mang.concat(action.item)}
+    //them vao dau
+    return { mang: [action.item].concat(state.mang) };
   }
   return state;
 };
@@ -24500,6 +24502,25 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var styles = {
+  them: {
+    background: 'yellow',
+    color: 'white',
+    border: 0,
+    borderRadius: 8,
+    paddingLeft: 10
+  },
+  ThemId: {
+    background: '#000000',
+    color: 'white',
+    border: 0,
+    borderRadius: 8,
+    paddingLeft: 10,
+    marginTop: 10,
+    marginBottom: 10
+  }
+};
+
 var NoteForm = function (_Component) {
   _inherits(NoteForm, _Component);
 
@@ -24530,8 +24551,10 @@ var NoteForm = function (_Component) {
         _react2.default.createElement(
           'form',
           null,
-          _react2.default.createElement('input', { type: 'text', placeholder: 'type to note...', ref: 'txtContent' }),
-          _react2.default.createElement('input', { type: 'text', placeholder: 'type to note...', ref: 'txtId' }),
+          _react2.default.createElement('input', { type: 'text', placeholder: 'type to note...', ref: 'txtContent', style: styles.them }),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('input', { type: 'text', placeholder: 'type to note...', ref: 'txtId', style: styles.ThemId }),
+          _react2.default.createElement('br', null),
           _react2.default.createElement(
             'button',
             { onClick: this.Them.bind(this) },

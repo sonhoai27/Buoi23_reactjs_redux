@@ -28,7 +28,9 @@ const reducer = (state = defaultState, action) => {
     return {mang: state.mang.filter(e => e.id !== action.id)}
   }
   if(action.type === 'THEM') {
-    return {mang: state.mang.concat(action.item)}
+    // return {mang: state.mang.concat(action.item)}
+    //them vao dau
+    return {mang: [action.item].concat(state.mang)}
   }
   return state
 }
